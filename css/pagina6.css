@@ -42,7 +42,7 @@ font-family: 'Effra', sans-serif;
   width: 80px;
   height: 30px;
   border-radius: 5px;
-  background-color: #e2353b;
+  background-color: #343186;
   color: white;
   border-color: transparent;
   align-items: center;
@@ -61,7 +61,7 @@ font-family: 'Effra', sans-serif;
 
 .verm
 {
-  background-color: #e2353b;
+  background-color: #343186;
   top: 0px;
   width: 360px;
   height: 60px;
@@ -70,7 +70,7 @@ font-family: 'Effra', sans-serif;
 
 .menu2
 {
-  background-color: #e2353b;
+  background-color: #343186;
   margin-top: 10px;
   width: 360px;
   height: 60px;
@@ -238,7 +238,7 @@ margin-left: 65px;
 width: 80px;
 height: 40px;
 border-radius: 5px;
-background-color: #e2353b;
+background-color: #343186;
 color: white;
 align-items: center;
 }

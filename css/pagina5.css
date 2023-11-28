@@ -20,7 +20,7 @@ body
   width: 80px;
   height: 30px;
   border-radius: 5px;
-  background-color: #e2353b;
+  background-color: #343186;
   color: white;
   border-color: transparent;
   align-items: center;
@@ -39,7 +39,7 @@ body
 
 .verm
 {
-  background-color: #e2353b;
+  background-color: #343186;
   top: 0px;
   width: 360px;
   height: 60px;
@@ -48,7 +48,7 @@ body
 
 .menu2
 {
-  background-color: #e2353b;
+  background-color: #343186;
   margin-top: 10px;
   width: 360px;
   height: 60px;
@@ -151,7 +151,7 @@ border-color: transparent;
   height: 30px;
   border-color: transparent;
   border-radius: 5px;
-  background-color: #e2353b;
+  background-color: #343186;
   color: white;
   align-items: center;
 }
@@ -189,7 +189,7 @@ margin-left: 65px;
 width: 80px;
 height: 40px;
 border-radius: 5px;
-background-color: #e2353b;
+background-color: #343186;
 color: white;
 align-items: center;
 }
