@@ -44,8 +44,8 @@ Pesquisar:<select id = "pesquisa">
                                             <td> '.$linha['Idadepac'] .' </td>
                                             <td> '.$linha['CPFpac'] .' </td>
                                             <td> '.$linha['Telefone'] .' </td>
-                                          <td> <a href="excluir.php?id='.$linha['nOcorrencia'].'"> <h3>Excluir</h3> <a> </td>
-                                          <td> <a href="alterar.php?id='.$linha['nOcorrencia'].'"> <h3>Alterar</h3> <a> </td>
+                                          <td> <a href="excluir2.php?id='.$linha['nOcorrencia'].'"> <h3>Excluir</h3> <a> </td>
+                                          <td> <a href="alterar2.php?id='.$linha['nOcorrencia'].'"> <h3>Alterar</h3> <a> </td>
                                       </tr>
                                   ';
                               }

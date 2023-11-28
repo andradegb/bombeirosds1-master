@@ -5,7 +5,7 @@ $nome = $_POST['nome2'];
 
 
 
-    $comando = $pdo->prepare("SELECT * FROM cadastro WHERE nome = :nome");
+    $comando = $pdo->prepare("SELECT * FROM cadastro WHERE nome = :nome and ativo=1");
     $comando->bindParam(':nome', $nome);
     $resultado = $comando->execute();
   

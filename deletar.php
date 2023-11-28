@@ -9,13 +9,13 @@ if (isset($_POST['tipoDeletar'])) {
     if ($tipoDeletar === 'N') {
         $nome = $_POST['nome'];
       
-        $comando = $pdo->prepare("DELETE FROM cadastro WHERE nome = :nome");
-        $comando->bindParam(':nome', $nome);
+        $comando = $pdo->prepare("UPDATE cadastro SET ativo=0 WHERE id =:id");
+        $comando->bindParam(':id', $id);
         $resultado = $comando->execute();
     } elseif ($tipoDeletar === 'I') {
         $id = $_POST['id'];
         
-        $comando = $pdo->prepare("DELETE FROM cadastro WHERE id = :id");
+        $comando = $pdo->prepare("UPDATE cadastro SET ativo=0 WHERE id =:id");
         $comando->bindParam(':id', $id);
         $resultado = $comando->execute();
     }
