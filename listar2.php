@@ -3,27 +3,47 @@
         
         if($url==1)
         {
-
+            
             if($meuselect==1)
             {
-                $comando = $pdo->prepare("SELECT * FROM usuarios WHERE nome_paciente LIKE '%$texto%' ");
+                $comando = $pdo->prepare("SELECT * FROM paciente WHERE Sexo LIKE '%$texto%' ");
             }
-            if($meuselect==2)
+            if($meuselect==1)
             {
-                $comando = $pdo->prepare("SELECT * FROM usuarios WHERE email LIKE '%$texto%' ");
+                $comando = $pdo->prepare("SELECT * FROM paciente WHERE Nome_hospital LIKE '%$texto%' ");
             }
-            if($meuselect==3)
+            if($meuselect==1)
             {
-                $comando = $pdo->prepare("SELECT * FROM usuarios WHERE telefone LIKE '%$texto%' ");
+                $comando = $pdo->prepare("SELECT * FROM paciente WHERE Nomepac LIKE '%$texto%' ");
             }
-            if($meuselect==4)
+            if($meuselect==1)
             {
-                $comando = $pdo->prepare("SELECT * FROM usuarios WHERE perfil LIKE '%$texto%' ");
+                $comando = $pdo->prepare("SELECT * FROM paciente WHERE Idadepac LIKE '%$texto%' ");
+            }
+            if($meuselect==1)
+            {
+                $comando = $pdo->prepare("SELECT * FROM paciente WHERE CPFpac LIKE '%$texto%' ");
+            }
+            if($meuselect==1)
+            {
+                $comando = $pdo->prepare("SELECT * FROM paciente WHERE Telefone LIKE '%$texto%' ");
+            }
+            if($meuselect==1)
+            {
+                $comando = $pdo->prepare("SELECT * FROM paciente WHERE NOMEACOM LIKE '%$texto%' ");
+            }
+            if($meuselect==1)
+            {
+                $comando = $pdo->prepare("SELECT * FROM paciente WHERE IDADEACOM LIKE '%$texto%' ");
+            }
+            if($meuselect==1)
+            {
+                $comando = $pdo->prepare("SELECT * FROM paciente WHERE Localidade LIKE '%$texto%' ");
             }
 
         }
         else{
-            $comando = $pdo->prepare("SELECT * FROM usuarios");
+            $comando = $pdo->prepare("SELECT * FROM paciente");
         }
         $comando->execute();
         

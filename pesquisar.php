@@ -8,9 +8,9 @@
 <body>
 Pesquisar:<select id = "pesquisa">
  <option value="1">Nome</option>
- <option value="2">E-mail</option>
- <option value="3">Telefone</option>
- <option value="4">Perfil</option>
+ <option value="2">Idade</option>
+ <option value="3">CPF</option>
+ <option value="4">Telefone</option>
 </select>
 <input size="5" type="text" id="texto">
 <button onclick="pesquisar();">ok</button>
@@ -20,9 +20,9 @@ Pesquisar:<select id = "pesquisa">
                 <tr>
                     <th> ID </th>
                     <th> Nome </th>
-                    <th> E-mail </th>
-                    <th> Telefone</th>
-                    <th> Perfil </th>
+                    <th> Idade </th>
+                    <th> CPF</th>
+                    <th> Telefone </th>
                     <th colspan="5"> Ações </th>
                 </tr>
             </thead>
@@ -39,13 +39,13 @@ Pesquisar:<select id = "pesquisa">
                           if(!empty($lista_usuarios)){
                               foreach($lista_usuarios as $linha){
                                   echo ' <tr>
-                                          <td> '.$linha['id'] .' </td>
-                                          <td> '.$linha['nome'] .' </td>
-                                            <td> '.$linha['email'] .' </td>
-                                            <td> '.$linha['telefone'] .' </td>
-                                            <td> '.$linha['perfil'] .' </td>
-                                          <td> <a href="excluir.php?id='.$linha['id'].'"> <h3>Excluir</h3> <a> </td>
-                                          <td> <a href="alterar.php?id='.$linha['id'].'"> <h3>Alterar</h3> <a> </td>
+                                          <td> '.$linha['nOcorrencia'] .' </td>
+                                          <td> '.$linha['Nomepac'] .' </td>
+                                            <td> '.$linha['Idadepac'] .' </td>
+                                            <td> '.$linha['CPFpac'] .' </td>
+                                            <td> '.$linha['Telefone'] .' </td>
+                                          <td> <a href="excluir.php?id='.$linha['nOcorrencia'].'"> <h3>Excluir</h3> <a> </td>
+                                          <td> <a href="alterar.php?id='.$linha['nOcorrencia'].'"> <h3>Alterar</h3> <a> </td>
                                       </tr>
                                   ';
                               }
