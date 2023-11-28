@@ -1,225 +1,372 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/adm.css">
-    <link href="https://fonts.cdnfonts.com/css/effra-heavy" rel="stylesheet">
-    <link rel="Website Icon" type="png"
-    href="../img/noar.png">
-    <title>ADM</title>
+  <title>Janela Web com Abas</title>
+  <style>
+    /* Estilo para a janela web */
+    .janela-web {
+      border: 1px solid #ccc;
+      width: 300px;
+      padding: 10px;
+      height: 600px;
+      max-height: 600px;
+      overflow-y: auto;
+      background-color: silver;
+      position: relative;
+    }
+    
+    /* Estilo para as abas */
+    .abas {
+      list-style: none;
+      border-color: rgb(143, 137, 137);     
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
+    
+    .aba {
+      padding: 20px 27.5px;
+      margin-right: 5px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-bottom: none;
+      color: white;
+      border-radius: 5px 5px 0 0;
+      background-color: #e2353b;
+      
+    }
+    
+    .aba.ativa {
+      background-color: #fff;
+      border-bottom: 1px solid #ccc;
+      color: black;
+    }
+
+    .principal{
+        width: 100%;
+     
+        height: 100vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        justify-items: center;
+        align-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    /* Estilo para as páginas individuais */
+    .pagina {
+      width: 100%;
+      height: calc(100% - 30px); /* Altura ajustada para acomodar as abas */
+      position: absolute;
+      display: none;
+    }
+    
+    /* Mostra apenas a página ativa */
+    .pagina.ativa {
+      display: block;
+    }
+
+    .form-container {
+    width: 300px; /* Alterado para 100% */
+    background-color: #fff;
+    padding: 30px;
+      
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Adicionado para garantir que o padding não aumente a largura */
+}
+
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        input[type="email"]:focus {
+            border-color: #e2353b;
+        }
+
+        .form-button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #e2353b;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-button:hover {
+            background-color: #4c7c7d;
+        }
+
+        .form-button:active {
+            background-color: #3b5d5e;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #e2353b;
+        }
+
+        .form-message {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #ebccd1;
+            color: #e2353b;
+            display: none;
+        }
+
+        .form-message.success {
+            background-color: #e2353b;
+            color: white;
+        }
+
+        table.resultado {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    table.resultado th,
+    table.resultado td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+        background-color: white; 
+    }
+
+    table.resultado th {
+        background-color: white;
+        color: #333;
+    }
+
+    table.resultado tr:nth-child() {
+      background-color: silver;
+    }
+
+    table.resultado tr:hover {
+        background-color: silver;
+    }
+  </style>
 </head>
 <body>
-    <div class="menu">
-        <div class="menu2">
-           <img class="logo" src="../img/logo_grande.png" >
-            <div title="Tela inicial" class="casa">
-                <img title="Tela inicial" class="casinha" src="../img/casinha.png">
+<div class="principal">
+
+
+  <div class="janela-web">
+    <ul class="abas">
+      <li class="aba ativa" onclick="mostrarPagina(1)">C</li>
+      <li class="aba" onclick="mostrarPagina(2)">D</li>
+      <li class="aba" onclick="mostrarPagina(3)">L</li>
+      
+    </ul>
+    <div class="pagina ativa" id="pagina1">
+  
+      <div class="form-container">
+        <h1>Cadastro de Bombeiro</h1>
+        <div class="form-message" id="formMessage"></div>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="login">Nome</label>
+                <input type="text" id="login" name="nome" placeholder="Digite seu login" required>
             </div>
-           <div title="Ocorrências" class="add">
-           <a href="ocorrencias.html" onclick="return showAlertt();">
-            <img title="Ocorrências" class="add2"src="../img/ficha.png">
-            </a>
-        </div>
-            <div title="Sair" class="sair">
-                <a href="login.html" onclick="return showAlert();">
-                <img title="Sair" class="saindo"src="../img/sair.png">
-                </a>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
             </div>
-        </div>
+            <div class="form-group">
+                <label for="email">Cep</label>
+                <input type="text" id="email" name="cep" placeholder="Digite seu cep" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Descrição</label>
+                <input type="text" id="email" name="descricao" placeholder="Digite sua descrição" required>
+            </div>
+            
+            <button type="button" class="form-button" onclick="submitRegistrationForm()">Enviar</button>
+        </form>
+      </div>
     </div>
-    
-    <div class="div2">
-         <div class="ola">
-                <div class="bemvindo"><br><P>Bem Vindo(a)!</P></div>
-                <?php
-                    session_start();
-                    include ("../conecta.php");
-                    $logado = $_SESSION["logado"];
-                   
 
-                    $comando = $pdo->prepare("SELECT * FROM cadastro where login='$logado'");
-                    $resultado = $comando->execute();
-            
-                    while( $linhas = $comando->fetch()){
-                        $email = $linhas["login"];
-                    }
+    <div class="pagina " id="pagina2">
+  
+      <div class="form-container">
+        <h1>Deletar Bombeiro</h1>
+        <div class="form-message" id="formMessage"></div>
+  <form id="registrationForm2">
+    <div class="form-group">
+        <label for="login">Pelo Nome</label>
+        <input type="text" id="login" name="nome" placeholder="Digite o nome">
+        <button type="button"  class="form-button" onclick="submitDeletionForm('N')">Enviar</button>
 
+    </div>
+    <div class="form-group">
+        <label for="senha">Pelo ID</label>
+        <input type="text" id="senha" name="id" placeholder="Digite o ID">
+        <button type="button"  class="form-button" onclick="submitDeletionForm('I')">Enviar</button>
 
-
-
-                ?>
-                
-            
-                <div class="nome">
-                    <?php
-                    echo("$email");
-                    ?>
-                </div> 
-                <div class="perfil">
-                    <img class="bombe" src="../img/bombeiro (1).png">
-                </div> 
-       
-            </div>
-
-            <div class="cadastrados">
-            <div class="cada"> CADASTRADOS</div>
-  <form>
-    <div class="prin">
-        <?php
-            include("../conecta.php"); //conecta com o banco de dados
-            $comando = $pdo->prepare("SELECT * FROM cadastro");
-            $resultado = $comando->execute();
-            
-            while($linhas = $comando->fetch()){
-                $login = $linhas["login"];
-                $senha = $linhas["senha"];
-                $cep = $linhas["cep"];
-                $id = $linhas["id"]; // supondo que você tenha uma coluna ID para identificar unicamente cada usuário
-        ?>
-                <div class="usuario">
-                    <strong>Usuário:</strong> <?php echo $login; ?>
-                    <strong>CEP:</strong> <?php echo $cep; ?>
-                    
-                    <button  type="button" class="exclui" onclick="excluir('<?php echo $id; ?>' ,'<?php echo $login; ?>');">Remover</button>
-                </div>
-        <?php
-            }
-        ?>
     </div>
 </form>
 
-<div class="motivacional">
-    <img class="alerta" src="../img/alerta.png"> 
-<div class="lembre">  <b>Página Responsável pela administração dos usuários cadastrados.<b></div>
-<p><p>
+      </div>
+    </div>
+
     
-</div>        
+    <div class="pagina " id="pagina3">
+  
+      <div class="form-container">
+        <h1>Listar Bombeiro</h1>
+        <div class="form-message" id="formMessage"></div>
+        <form id="registrationForm3" >
+        <div class="form-group">
+        <label for="login">Pelo Nome</label>
+        <input type="text" id="login" name="nome2" placeholder="Digite o nome">
+        <button type="button" class="form-button"data-option="Listar1"onclick="submitListarForm()">Enviar</button>
+
+    </div>
+
+            
+            
+         
+    </form>
+      </div>
+
+      <div class="lista-container">
+        <h2>Lista de Bombeiros</h2>
+        <div id="result" class="resultado">
+          
+            
+          </div>
+      </div>
+    </div>
+
+    
+   
+  
+
+
+
+
 </div>
 
- </div>
-    <div class="div3">
-            <?php
-        include("../conecta.php");
+  
 
-        // Conta o número de usuários que não são administradores
-        $consultaNaoAdm = $pdo->prepare("SELECT COUNT(*) as count FROM cadastro WHERE adm = 'n'");
-        $consultaNaoAdm->execute();
-        $resultadoNaoAdm = $consultaNaoAdm->fetch();
-        $numeroNaoAdm = $resultadoNaoAdm['count'];
 
-        $consultaAdm = $pdo->prepare("SELECT COUNT(*) as count FROM cadastro WHERE adm = 's'");
-        $consultaAdm->execute();
-        $resultadoAdm = $consultaAdm->fetch();
-        $numeroAdm = $resultadoAdm['count'];
-        ?>
-         
-        <div class="numeross">
-       <div class="numerousu"><?php echo $numeroNaoAdm; ?><p> N° de Usuários Cadastrados<p></div>
-       <div class="numeroadm"><?php echo $numeroAdm; ?> <p>N° de Administradores<p> </div>
-        </div>
-        <div class="inserir">
-        <div class="um">
-        <b> CADASTRAR USUÁRIO:</b>
-     </div>
-    
-     <form action="../cadastrar.php" method="post" onsubmit="return validarCampo()">
-        <div class="tres">
-          
-            <div class="HOMI">
-                <input class="caixa" type="login" id="login" name="login" placeholder="Usuário">
-            </div>
-            <br>
-            <div class="senha">
-                <input class="caixa" type="senha" id="senha" name="senha" placeholder="código">
-            </div>
-            <div class="cpf">
-                <input class="caixa" type="cep" id="cep" name="cep" placeholder="CEP"  onkeyup="ValidarCEP()";>
-            </div>
-            <div class="descricao">
-                <input class="caixa" type="descricao" id="descricao" name="descricao" placeholder="Descrição Pessoal">
-            </div>
-            <div id="mensagemErro" ></div>
-            
-        </div>
-        <button class="entrar" type="submit">CONFIRMAR</button>
-        
-    </form>
-        </div>
-       
-    </div>
-</body>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
 <script>
- function showAlert() {
-        alert('Você irá sair dessa página!');
-        return true; // permite que a navegação continue após mostrar o alerta
-    }
-    function showAlertt() {
-        alert('Você irá para página de ocorrências!');
-        return true; // permite que a navegação continue após mostrar o alerta
-    }
+  function submitRegistrationForm() {
+        const form = document.getElementById('registrationForm');
+        const formMessage = document.getElementById('formMessage');
+        const formData = new FormData(form);
 
-function validarCEP() {
-            const cepInput = document.getElementById("cep");
-            const resultadoElement = document.getElementById("resultado");
+        formData.append('tipoDeletar', '');
 
-            const cepRegex = /^\d{5}-\d{3}$/; // Formato esperado: 00000-000
-
-            if (cepRegex.test(cepInput.value)) {
-                resultadoElement.textContent = "CEP válido!";
-                resultadoElement.style.color = "green";
-            } else {
-                resultadoElement.textContent = "CEP inválido. Use o formato 00000-000.";
-                resultadoElement.style.color = "red";
+        $.ajax({
+            type: 'POST',
+            url: '../cadastrar.php',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                // Handle success and update UI
+            },
+            error: function () {
+                // Handle error and update UI
             }
-        }
-    function validarCampo() {
-      var campo = document.getElementById('login').value;
-      
-      if (campo === '') {
-        document.getElementById('mensagemErro').innerHTML = 'Campo vazio! Por favor, preencha o campo.';
-        return false;
-      }
-      
-      
-    
-        var campo = document.getElementById('senha').value;
-      
-      if (campo === '') {
-        document.getElementById('mensagemErro').innerHTML = 'Campo vazio! Por favor, preencha o campo.';
-        return false;
-      }
-      
-      return true;
-
-      var campo = document.getElementById('cpf').value;
-      
-      if (campo === '') {
-        document.getElementById('mensagemErro').innerHTML = 'Campo vazio! Por favor, preencha o campo.';
-        return false;
-      }
-      
-      return true;
-
-      var campo = document.getElementById('descricao').value;
-      
-      if (campo === '') {
-        document.getElementById('mensagemErro').innerHTML = 'Campo vazio! Por favor, preencha o campo.';
-        return false;
-      }
-      
-      return true;
+        });
     }
 
-    function excluir(id, login) {
-    // Aqui você pode fazer uma chamada AJAX para excluir o usuário com base no ID
-    // ou redirecionar para uma página PHP que realiza a exclusão.
-    if (confirm("Você tem certeza que deseja excluir este usuário?")) {
-        // Exemplo de redirecionamento para uma página PHP:
-        window.location.href = '../excluir.php?id=' + id +"&login=" + login;
+    function submitDeletionForm(type) {
+        const form = document.getElementById('registrationForm2');
+        const formMessage = document.getElementById('formMessage');
+        const formData = new FormData(form);
+
+        formData.append('tipoDeletar', type);
+
+        $.ajax({
+            type: 'POST',
+            url: '../deletar.php',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                // Handle success and update UI
+            },
+            error: function () {
+                // Handle error and update UI
+            }
+        });
     }
+
+    function submitListarForm() {
+        const form = document.getElementById('registrationForm3');
+        const formMessage = document.getElementById('formMessage');
+        const formData = new FormData(form);
+
+        formData.append('tipoDeletar', ''); // Assuming listar does not require tipoDeletar
+
+        $.ajax({
+            type: 'POST',
+            url: '../listar.php',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                // Construct a table structure with received data
+                var tableContent = '<table class="resultado"><tr><th>ID</th><th>Nome</th><th>Senha</th><th>Cep</th><th>Descricacao</th></tr>';
+                tableContent += response; // Append the received data (table rows)
+
+                tableContent += '</table>';
+
+                // Replace the content of the result div with the created table
+                $('#result').html(tableContent);
+            },
+            error: function () {
+                // Handle error and update UI
+            }
+        });
+    }
+  
+
+function mostrarPagina(numeroPagina) {
+    const paginas = document.querySelectorAll('.pagina');
+    const abas = document.querySelectorAll('.aba');
+
+    paginas.forEach((pagina) => {
+        pagina.classList.remove('ativa');
+    });
+    abas.forEach((aba) => {
+        aba.classList.remove('ativa');
+    });
+
+    document.getElementById(`pagina${numeroPagina}`).classList.add('ativa');
+    document.querySelectorAll('.aba')[numeroPagina - 1].classList.add('ativa');
 }
-    
 </script>
+
+</body>
 </html>
